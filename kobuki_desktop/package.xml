@@ -14,7 +14,6 @@
   <run_depend>kobuki_dashboard</run_depend>
   <run_depend>kobuki_gazebo</run_depend>
   <run_depend>kobuki_gazebo_plugins</run_depend>
-  <run_depend>kobuki_qtestsuite</run_depend>
   <run_depend>kobuki_rviz_launchers</run_depend>
   
   <export>
