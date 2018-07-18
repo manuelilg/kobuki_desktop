@@ -45,7 +45,13 @@ void GazeboRosKobuki::updateJointState()
    * Joint states
    */
   std::string baselink_frame = gazebo_ros_->resolveTF("base_link");
-  joint_state_.header.stamp = ros::Time::now();
+//  joint_state_.header.stamp = ros::Time::now();
+#if GAZEBO_MAJOR_VERSION >= 8
+  common::Time gz_time_now = model_->GetWorld()->SimTime();
+#else
+  common::Time gz_time_now = model_->GetWorld()->GetSimTime();
+#endif
+  joint_state_.header.stamp = ros::Time(gz_time_now.sec, gz_time_now.nsec);
   joint_state_.header.frame_id = baselink_frame;
 
   #if GAZEBO_MAJOR_VERSION >= 9
